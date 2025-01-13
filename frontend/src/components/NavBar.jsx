@@ -1,4 +1,3 @@
-import React from "react";
 import { assets } from "../assets/assets";
 import { Link, NavLink } from "react-router-dom";
 import { useState } from "react";
@@ -6,7 +5,9 @@ const NavBar = () => {
   const [isVisible, setisVisible] = useState(false);
   return (
     <div className="flex items-center justify-between py-2 font-medium">
-      <img src={assets.logo} alt="Logo" className="w-24"></img>
+      <Link to="/">
+        <img src={assets.logo} alt="Logo" className="w-24"></img>
+      </Link>
       <ul className="hidden gap-5 text-sm text-gray-700 sm:flex">
         <NavLink to="/" className="flex flex-col items-center gap-1">
           <p>HOME</p>
@@ -61,7 +62,7 @@ const NavBar = () => {
       </div>
       {/* Sidebar Menu for small Screens */}
       <div
-        className={`absolute bottom-0 right-0 top-0 overflow-hidden bg-white transition-all ${
+        className={`z-10 absolute bottom-0 right-0 top-0 overflow-hidden bg-white transition-all ${
           isVisible ? `w-full` : `w-0`
         }`}
       >
@@ -77,10 +78,34 @@ const NavBar = () => {
             />
             <p>Back</p>
           </div>
-          <NavLink onClick={() => setisVisible(false)} className='py-2 pl-6 border' to='/'>Home</NavLink>
-          <NavLink onClick={() => setisVisible(false)} className='py-2 pl-6 border' to='/collection'>COLLECTION</NavLink>
-          <NavLink onClick={() => setisVisible(false)} className='py-2 pl-6 border' to='/about'>ABOUT</NavLink>
-          <NavLink onClick={() => setisVisible(false)} className='py-2 pl-6 border' to='/contact'>CONTACT</NavLink>
+          <NavLink
+            onClick={() => setisVisible(false)}
+            className="border py-2 pl-6"
+            to="/"
+          >
+            Home
+          </NavLink>
+          <NavLink
+            onClick={() => setisVisible(false)}
+            className="border py-2 pl-6"
+            to="/collection"
+          >
+            COLLECTION
+          </NavLink>
+          <NavLink
+            onClick={() => setisVisible(false)}
+            className="border py-2 pl-6"
+            to="/about"
+          >
+            ABOUT
+          </NavLink>
+          <NavLink
+            onClick={() => setisVisible(false)}
+            className="border py-2 pl-6"
+            to="/contact"
+          >
+            CONTACT
+          </NavLink>
         </div>
       </div>
     </div>
