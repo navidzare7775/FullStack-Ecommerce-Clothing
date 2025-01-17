@@ -12,6 +12,8 @@ import PlaceOrders from "./pages/PlaceOrder";
 import Orders from "./pages/Orders";
 import NoPage from "./pages/NoPage";
 import Footer from "./components/Footer";
+import BacktoTopButton from "./components/BacktoTopButton";
+import SearchBar from "./components/SearchBar";
 
 const pages = {
   home: { path: "/", element: <Home /> },
@@ -42,6 +44,7 @@ const App = () => {
     <div className="px-4 sm:px-[5vw] md:px-[7vw] lg:px-[9vw]">
       {/* Unchangable UI's Defined here: */}
       {showGlobalComponent && <NavBar />}
+      {showGlobalComponent && <SearchBar />}
       {/* Routes */}
       <Routes>
         {Object.entries(pages).map(([key, { path, element }]) => (
@@ -51,6 +54,7 @@ const App = () => {
         <Route path="*" element={<Navigate to="/404" />}/>
         <Route path="/404" element={<NoPage />} />
       </Routes>
+      {showGlobalComponent && <BacktoTopButton />}
       {showGlobalComponent && <Footer />}
     </div>
   );

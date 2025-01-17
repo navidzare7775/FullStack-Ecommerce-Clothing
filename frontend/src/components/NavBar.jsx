@@ -1,8 +1,10 @@
 import { assets } from "../assets/assets";
 import { Link, NavLink } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { ShopContext } from "../context/ShopContext";
 const NavBar = () => {
   const [isVisible, setisVisible] = useState(false);
+  const { setShowSearch } = useContext(ShopContext);
   return (
     <div className="flex items-center justify-between py-2 font-medium">
       <Link to="/">
@@ -28,6 +30,7 @@ const NavBar = () => {
       </ul>
       <div className="flex items-center gap-6">
         <img
+        onClick={() => setShowSearch(true)}
           src={assets.search_icon}
           alt="Search"
           className="w-5 cursor-pointer"
@@ -62,7 +65,7 @@ const NavBar = () => {
       </div>
       {/* Sidebar Menu for small Screens */}
       <div
-        className={`z-10 absolute bottom-0 right-0 top-0 overflow-hidden bg-white transition-all ${
+        className={`absolute bottom-0 right-0 top-0 z-10 overflow-hidden bg-white transition-all ${
           isVisible ? `w-full` : `w-0`
         }`}
       >
