@@ -11,6 +11,7 @@ import Login from "./pages/Login";
 import PlaceOrders from "./pages/PlaceOrder";
 import Orders from "./pages/Orders";
 import NoPage from "./pages/NoPage";
+import Footer from "./components/Footer";
 
 const pages = {
   home: { path: "/", element: <Home /> },
@@ -50,6 +51,7 @@ const App = () => {
         <Route path="*" element={<Navigate to="/404" />}/>
         <Route path="/404" element={<NoPage />} />
       </Routes>
+      {showGlobalComponent && <Footer />}
     </div>
   );
 };
