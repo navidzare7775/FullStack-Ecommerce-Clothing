@@ -4,7 +4,7 @@ import { useContext, useState } from "react";
 import { ShopContext } from "../context/ShopContext";
 const NavBar = () => {
   const [isVisible, setisVisible] = useState(false);
-  const { setShowSearch } = useContext(ShopContext);
+  const { setShowSearch, getCartCount } = useContext(ShopContext);
   return (
     <div className="flex items-center justify-between py-2 font-medium">
       <Link to="/">
@@ -52,7 +52,7 @@ const NavBar = () => {
         <Link to="/cart" className="relative">
           <img src={assets.cart_icon} alt="Orders" className="w-5 min-w-5" />
           <p className="absolute bottom-[-5px] right-[-5px] aspect-square w-4 rounded-full bg-black text-center text-[8px] leading-4 text-white">
-            10
+            {getCartCount()}
           </p>
         </Link>
         {/* Visibility will be set to true when clicked (on Small Screen Sizes) */}
